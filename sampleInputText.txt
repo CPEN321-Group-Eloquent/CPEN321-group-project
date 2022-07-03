@@ -1,0 +1,21 @@
+\begin{presentation}
+    \title{Sample Presentation: Speeches}
+    
+    \begin{cuecard}[color=green][endpause=1.5]
+        \front{
+            Speeches often start with a hook
+        } \back[color=pink]{
+            \item A hook is anything that grabs the audience's attention  
+            \item Examples of hooks are anecdotes, jokes, \highlight{"hot takes"}
+            \item Knowing targed audience leads to better hooks %switch to next cue card when this item is spoken
+        }
+    \end{cuecard}
+    \begin{cuecard} %no color or endpause specified. Default values of color=white and endpause=0 will be used.
+        \front{
+            Bottom line upfront
+        } \back{
+            \item The audience needs to first know why they should pay attention to your speech
+            \item[color=red] Then, deliver on your promise
+        }
+    \end{cuecard}
+\end{presentation}
