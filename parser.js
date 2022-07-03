@@ -33,3 +33,9 @@ function textify(userID, presID) {
     // add title block
     // add cue-card blocks 
 }
+
+// module exports
+module.exports = {
+    parse,
+    textify
+}
