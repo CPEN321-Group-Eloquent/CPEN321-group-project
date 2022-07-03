@@ -1,7 +1,11 @@
 \begin{presentation}
     \title{Sample Presentation: Speeches}
     
-    \begin{cuecard}[color=green][endpause=1.5]
+    \begin{cuecard}[color=green][endpause=true] % Background color is green, expect 
+                                                % a pause (pause of length, in seconds, 
+                                                % > 1 standard deviation from pauses in 
+                                                % cuecard duration) after last point on 
+                                                % cue-card back is spoken 
         \front{
             Speeches often start with a hook
         } \back[color=pink]{
@@ -10,7 +14,7 @@
             \item Knowing targed audience leads to better hooks %switch to next cue card when this item is spoken
         }
     \end{cuecard}
-    \begin{cuecard} %no color or endpause specified. Default values of color=white and endpause=0 will be used.
+    \begin{cuecard} %no color or endpause specified. Default values of color=white and endpause=true will be used.
         \front{
             Bottom line upfront
         } \back{
