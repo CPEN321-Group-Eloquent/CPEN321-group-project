@@ -1,4 +1,4 @@
-var presentationManager = require("PresManager");
+//var presentationManager = require("PresManager");
 
 /* Creates and stores away a presentation object, given its text representation, 
  * and a user ID. Returns true if parsing and storing are successful. Otherwise, 
