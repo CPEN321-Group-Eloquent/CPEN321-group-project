@@ -6,9 +6,16 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <form>
-            <input id="importButton" type="button" value="import">
-            <input id="exportButton" type="button" value="export">
+        <form class="fileImport">
+            <input type="file" name="importFile" accept=".txt" required />
+            <br/><br/>
+            <input type="submit" value="import" />
+        </form>
+        
+        <br/><br/>
+        
+        <form class="fileExport">
+            <input id="exportButton" type="button" value="export" />
         </form>
     </body>
 </html>

@@ -11,6 +11,7 @@ const clientApp = path.join(__dirname, "");
 const client = path.join(__dirname, "/import_export.html");
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.text({ type: "text/plain"}));
 app.use("/", express.static(clientApp));
 
 app.listen(3000, () => {
@@ -22,7 +23,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/importTest", (req, res) => {
-    console.log(req);
-    console.log(res);
-    res.send("OK");
+    console.log(req.body);
+    res.send(parser.parse(0, req.body));
 });
