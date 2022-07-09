@@ -13,8 +13,9 @@ The "presentation", "cuecard", and "details" objects contain other objects, and
 are therefore non-primitive. These start with "\begin{...}[...]" and end with "\end{...}"
 tokens. The type of the non-primitive will go in between the curly braces ("{<type>}") 
 after "\begin" and "\end". The \begin token is optionally ended with a series of 
-attributes, each enclosed by square brackets (e.g. "[color=pink]"). For now, 
-nesting non-primitive objects of the same type is not supported.
+attributes, comma-separated, and enclosed by square brackets (e.g. "[color=pink, 
+endpause=false]"). For now, nesting non-primitive objects of the same type is not 
+supported.
 
 Tokens and keywords:
 The text representation is broken down into tokens, delimited by "\" characters. 
@@ -26,10 +27,10 @@ Primitive objects:
 The "title", "point", and "item" objects are primitive, as they contain text only.
 These are marked by keywords of the same name. For example, a point object will 
 begin with a "\point", and will continue until the next keyword is reached. The 
-keyword is optionally followed by a series of attributes, each enclosed with 
-square brackets. Regarding where text will be rendered, the text from the 
-"\point ..." tokens will be rendered on the front of cuecards, and the text from 
-the "\item ..." tokens will be rendered on the back of cuecards.
+keyword is optionally followed by a series of attributes, comma-separated, and 
+enclosed with square brackets. Regarding where text will be rendered, the text 
+from the "\point ..." tokens will be rendered on the front of cuecards, and the 
+text from the "\item ..." tokens will be rendered on the back of cuecards.
 
 Comments:
 Use "%". The "%" and the remaining characters on the same line will be ignored 

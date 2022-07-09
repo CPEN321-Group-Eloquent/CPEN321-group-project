@@ -1,7 +1,7 @@
 \begin{presentation}
     \title Sample Presentation: Speeches
     
-    \begin{cuecard}[color=lime][endpause=true] % Background color is lime, expect 
+    \begin{cuecard}[color=lime, endpause=true] % Background color is lime, expect 
                                                 % a pause (pause of length, in seconds, 
                                                 % > 1 standard deviation from pauses in 
                                                 % cuecard duration) after last point on 
