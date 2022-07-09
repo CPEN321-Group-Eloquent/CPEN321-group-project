@@ -34,6 +34,7 @@ function Presentation() {
 function Cuecard() {
     this.backgroundColor = colors["white"]; // white by default
     this.transitionPhrase = ""; // If empty transition phrase, default to manual cuecard transition
+    this.endpause = true;
     this.front = {
         backgroundColor: colors["white"], 
         content: {
@@ -53,11 +54,11 @@ function CuecardBack() {
 
 
 Presentation.prototype.addCard = function(card) {
-    this.cards.append(card);
+    this.cards.push(card);
 }
 
 Presentation.prototype.addUser = function(userID, permission) {
-    this.users.append({id: userID, permission: permission});
+    this.users.push({id: userID, permission: permission});
 }
 
 
@@ -67,7 +68,7 @@ CuecardBack.prototype.addContent = function(font, style, size, color, message) {
         c = colors[color];
     }
     // TODO add support for font, style, and size attributes
-    this.content.append({
+    this.content.push({
         color: c,
         message: message
     });
@@ -99,25 +100,88 @@ function parse(userID, text) {
     var keywords = {begin:"begin", end:"end", title:"title", point:"point", item:"item"};
     var contexts = {presentation:false, cuecard:false, details:false};
     var p = new Presentation();
+    var c = null; // Cuecard
 
-    // for (let i = 0; i < tokens.length; i++) {
-    //     if (contexts.presentation == true) {
-    //         if (contexts.cuecard == true) {
-    //             if (contexts.details == true) {
+    for (let i = 0; i < tokens.length; i++) {
+        var tokenNoWhitespace = tokens[i].replace(/\s/g, "");
+        var attributesStartIndex = tokenNoWhitespace.indexOf("[");
+        var attributesEndIndex = tokenNoWhitespace.indexOf("]");
+        if (contexts["presentation"] == true) {
+            if (contexts["cuecard"] == true) {
+                if (contexts["details"] == true) {
+                    if (tokenNoWhitespace === keywords["end"] + "{details}") {
+                        contexts["details"] = false;
+                    } else if (i == tokens.length - 3) {
+                        throw {err: "No \\end{details} token found after \\begin{details}."};
+                    } else {
+                        var tokenNoKeyword = tokens[i].slice("item".length - tokens[i].length);
+                        if (tokenNoKeyword[0] === "[" && tokenNoKeyword.slice(1, tokenNoKeyword.indexOf("=")) === "color") { 
+                            var color = tokenNoKeyword.slice(tokenNoKeyword.indexOf("=") + 1, tokenNoKeyword.indexOf("]"));
+                            if (color in colors) c.back.addContent(null, null, null, color, tokenNoKeyword.slice(tokenNoKeyword.indexOf("]") + 1, tokenNoKeyword.length))
+                        } else {
+                            c.back.addContent(null, null, null, null, tokenNoKeyword);
+                        }
+                        console.log(c.back.content);
+                    }
+                } else {
+                    if (tokenNoWhitespace.slice(0, attributesStartIndex) === keywords["begin"] + "{details}"
+                        || tokenNoWhitespace === keywords["begin"] + "{details}") {
+                        contexts["details"] = true;
+                    } else if (tokenNoWhitespace.slice(0, "point".length) === "point") {
+                        var tokenNoKeyword = tokens[i].slice("point".length - tokens[i].length);
+                        c.front.content["message"] = tokenNoKeyword;
+                    }
+                }
 
-    //             } else {
+                if (tokenNoWhitespace === keywords["end"] + "{cuecard}") {
+                    contexts["cuecard"] = false;
+                    c.transitionPhrase = c.back.content[c.back.content.length - 1]["message"]
+                    p.addCard(c);
+                    
+                } else if (i == tokens.length - 2) {
+                    throw {err: "No \\end{cuecard} token found after \\begin{cuecard}."};
+                }
+            } else {
+                if (tokenNoWhitespace.slice(0, attributesStartIndex) === keywords["begin"] + "{cuecard}"
+                    || tokenNoWhitespace === keywords["begin"] + "{cuecard}") {
+                    contexts["cuecard"] = true;
+                    c = new Cuecard();
+                    c.back = new CuecardBack();
+                    
+                    if (attributesStartIndex != -1 && attributesEndIndex > attributesStartIndex) {
+                        var attributes = tokenNoWhitespace.slice(attributesStartIndex + 1, attributesEndIndex).split(",");
+                        for (let j = 0; j < attributes.length; j++) {
+                            attributes[j].trim();
+                            var attributeKey = attributes[j].slice(0, attributes[j].indexOf("="));
+                            var attributeValue = attributes[j].slice(attributes[j].indexOf("=") + 1, attributes[j].length);
+                            
+                            if (attributeKey === "color" && attributeValue in colors) c.backgroundColor = colors[attributeValue];
+                            else if (attributeKey === "endpause" && attributeValue === "false") c.endpause = false;
+                        }
+                    }
+                } else if (tokens[i].slice(0, "title".length) === "title") {
+                    p.title = tokens[i].slice("title".length - tokens[i].length);
+                }
+            }
 
-    //             }
-    //         } else {
+            if (tokenNoWhitespace === keywords["end"] + "{presentation}") {
+                contexts["presentation"] = false;
+            } else if (i == tokens.length - 1) {
+                throw {err: "No \\end{presentation} token found after \\begin{presentation}."};
+            }
+        } else {
+            if (tokenNoWhitespace === keywords["begin"] + "{presentation}") {
+                contexts["presentation"] = true;
+            }
+        }
+        console.log(contexts);
+    }
 
-    //         }
-    //     } else {
-    //         
-    //     }
-    // }
+    p.addUser(userID, "owner");
 
     console.log(JSON.stringify(p));
     return JSON.stringify(p);
+}
 
 /* Strip comments (all characters on a line, after a "%"), tabs, and newlines
  * from text representation of a presentation.
