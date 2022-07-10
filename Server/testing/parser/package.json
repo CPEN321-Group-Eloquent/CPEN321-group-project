@@ -1,0 +1,22 @@
+{
+  "name": "eloquent",
+  "version": "1.0.0",
+  "description": "A public speaking aide.",
+  "main": "router.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kd20011225/CPEN321-group-project.git"
+  },
+  "author": "Zachary Choo, Kaiwen Deng, Aswin Sai Subramanian, Ruiqi Tian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kd20011225/CPEN321-group-project/issues"
+  },
+  "homepage": "https://github.com/Kd20011225/CPEN321-group-project#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

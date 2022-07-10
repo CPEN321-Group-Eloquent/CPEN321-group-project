@@ -1,7 +1,7 @@
 var path = require("path");
 var filesystem = require("fs");
 var express = require("express");
-var parser = require("./parser.js");
+var parser = require("../../parser/parser.js");
 
 var app = express();
 
