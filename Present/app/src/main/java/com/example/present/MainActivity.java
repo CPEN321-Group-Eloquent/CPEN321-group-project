@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             textView1.setText(pres.cards[cardIndex].back.content[contentIndex].message);
         }
-        textView1.setBackgroundColor(0xff66ff66); // hex color 0xAARRGGBB
+        textView1.setBackgroundColor(0xffffffff); // hex color 0xAARRGGBB
         textView1.setPadding(20, 20, 20, 20);// in pixels (left, top, right, bottom)
 
         return textView1;
