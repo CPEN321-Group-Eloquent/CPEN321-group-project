@@ -1,16 +1,31 @@
 package com.example.present;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements RecognitionListener{
     private boolean isOnFront = false;
     private int currentCard = 0;
 
@@ -33,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
     Card card2 = new Card(1, "Then, deliver on your promise", 1, sideFront2, sideBack2);
 
     Presentation pres = new Presentation(new Card[]{card1, card2});
+
+    private Intent speechRecognizerIntent;
+    private String TAG = "Speech Recognizer";
+
+    public static final Integer RecordAudioRequestCode = 1;
+    private SpeechRecognizer speechRecognizer;
+    private TextView speechText;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -83,6 +105,38 @@ public class MainActivity extends AppCompatActivity {
                 fillLayout(linearLayout, pres, currentCard, isOnFront);
             }
         });
+
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
+            checkPermission();
+        }
+        speechText = findViewById(R.id.speech_text);
+
+        resetSpeechRecognizer();
+        createRecognizerIntent();
+        speechRecognizer.startListening(speechRecognizerIntent);
+    }
+
+    //stop listening when activity is paused
+    @Override
+    protected void onPause() {
+        super.onPause();
+        speechRecognizer.stopListening();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        resetSpeechRecognizer();
+        speechRecognizer.startListening(speechRecognizerIntent);
+    }
+
+    //stop listening when activity is stopped
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (speechRecognizer != null) {
+            speechRecognizer.destroy();
+        }
     }
 
     //dynamically create a textview
@@ -113,4 +167,90 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void checkPermission() {
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.RECORD_AUDIO},RecordAudioRequestCode);
+    }
+
+    private void createRecognizerIntent() {
+        speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
+    }
+
+    //@TODO cite this
+    private void resetSpeechRecognizer() {
+        if (speechRecognizer != null) {
+            speechRecognizer.destroy();
+        }
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+
+        if (speechRecognizer.isRecognitionAvailable(this)) {
+            speechRecognizer.setRecognitionListener(this);
+        } else {
+            finish();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == RecordAudioRequestCode && grantResults.length > 0 ){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                Toast.makeText(this,"Permission Granted",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onReadyForSpeech(Bundle params) {
+
+    }
+
+    @Override
+    public void onBeginningOfSpeech() {
+
+    }
+
+    @Override
+    public void onRmsChanged(float rmsdB) {
+
+    }
+
+    @Override
+    public void onBufferReceived(byte[] buffer) {
+
+    }
+
+    @Override
+    public void onEndOfSpeech() {
+        speechRecognizer.stopListening();
+    }
+
+    @Override
+    public void onError(int error) {
+        Log.d(TAG, "Error: " + error);
+        resetSpeechRecognizer();
+        speechRecognizer.startListening(speechRecognizerIntent);
+    }
+
+    @Override
+    public void onResults(Bundle results) {
+        ArrayList<String> data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+        speechText.setText(data.get(0));
+        speechRecognizer.startListening(speechRecognizerIntent);
+    }
+
+    @Override
+    public void onPartialResults(Bundle partialResults) {
+
+    }
+
+    @Override
+    public void onEvent(int eventType, Bundle params) {
+
+    }
+
+
+
+
 }
