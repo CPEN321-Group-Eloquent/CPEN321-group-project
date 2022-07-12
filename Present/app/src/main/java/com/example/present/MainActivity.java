@@ -9,9 +9,6 @@ import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,6 +22,8 @@ import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
+// speech recognition functions inspired by https://github.com/somil55/Android-Continuous-SpeechRecognition
+
 public class MainActivity extends AppCompatActivity implements RecognitionListener{
     private boolean isOnFront = false;
     private int currentCard = 0;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
     Content contentCard1Front1 = new Content("font", "style", 5, 1, "Speeches often start with a hook");
     Content contentCard1Back1 = new Content("font", "style", 5, 1, "A hook is anything that grabs the audience's attention");
     Content contentCard1Back2 = new Content("font", "style", 5, 1, "Examples of hooks are anecdotes, jokes, hot takes");
-    Content contentCard1Back3 = new Content("font", "style", 5, 1, "Knowing targed audience leads to better hooks");
+    Content contentCard1Back3 = new Content("font", "style", 5, 1, "Knowing target audience leads to better hooks");
 
     Content contentCard2Back1 = new Content("font", "style", 5, 1, "The audience needs to first know why they should pay attention to your speech");
     Content contentCard2Back2 = new Content("font", "style", 5, 1, "Then, deliver on your promise");
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
     Side sideFront2 = new Side(1, new Content[]{contentCard2Front1});
     Side sideBack2 = new Side(2, new Content[]{contentCard2Back1, contentCard2Back2});
 
-    Card card1 = new Card(1, "Knowing targed audience leads to better hooks", 0, sideFront1, sideBack1);
+    Card card1 = new Card(1, "Knowing target audience leads to better hooks", 0, sideFront1, sideBack1);
     Card card2 = new Card(1, "Then, deliver on your promise", 1, sideFront2, sideBack2);
 
     Presentation pres = new Presentation(new Card[]{card1, card2});
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
     public static final Integer RecordAudioRequestCode = 1;
     private SpeechRecognizer speechRecognizer;
     private TextView speechText;
+    private LinearLayout linearLayout;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -62,10 +62,12 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear_lay);
+        linearLayout = (LinearLayout) findViewById(R.id.linear_lay);
 
+        //initially populate the presentation view with the front of the first card
         fillLayout(linearLayout, pres, 0, isOnFront);
 
+        //go to next card if swiped left, previous card if swiped right, and flip card if swiped up or down
         linearLayout.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
             public void onSwipeLeft() {
                 if (currentCard >= pres.cards.length - 1) {
@@ -106,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
             }
         });
 
+        //get permissions for audio
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             checkPermission();
         }
@@ -123,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         speechRecognizer.stopListening();
     }
 
+    //start listening when activity is resumed
     @Override
     protected void onResume() {
         super.onResume();
@@ -178,7 +182,6 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
     }
 
-    //@TODO cite this
     private void resetSpeechRecognizer() {
         if (speechRecognizer != null) {
             speechRecognizer.destroy();
@@ -237,6 +240,17 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
     public void onResults(Bundle results) {
         ArrayList<String> data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
         speechText.setText(data.get(0));
+        //see if a substring in the text matches the transition phrase, ignoring case and punctuation
+        if (data.get(0).toLowerCase().contains(pres.cards[currentCard].transitionPhrase.toLowerCase().replaceAll("\\p{Punct}", ""))) {
+            if (currentCard >= pres.cards.length - 1) {
+                Toast.makeText(MainActivity.this, "No more cards!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            linearLayout.removeAllViews();
+            currentCard++;
+            fillLayout(linearLayout, pres, currentCard, isOnFront);
+        }
         speechRecognizer.startListening(speechRecognizerIntent);
     }
 
@@ -249,8 +263,4 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
     public void onEvent(int eventType, Bundle params) {
 
     }
-
-
-
-
 }
