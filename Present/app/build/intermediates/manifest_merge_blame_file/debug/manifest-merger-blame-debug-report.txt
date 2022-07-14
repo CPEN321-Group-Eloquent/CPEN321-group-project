@@ -1,0 +1,96 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.present"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="29"
+8-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:6:5-66
+11-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+12-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:7:5-70
+12-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:7:22-68
+13
+14    <queries>
+14-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:31:5-36:15
+15        <intent>
+15-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:32:9-35:18
+16            <action android:name="android.speech.RecognitionService" />
+16-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:33:13-34:68
+16-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:34:17-65
+17        </intent>
+18    </queries>
+19
+20    <application
+20-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:9:5-29:19
+21        android:allowBackup="true"
+21-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:10:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.7.0] C:\Users\zchoo\.gradle\caches\transforms-3\d8338c189490aee58604e111af57865f\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:11:9-65
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:fullBackupContent="@xml/backup_rules"
+26-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:12:9-54
+27        android:icon="@mipmap/ic_launcher"
+27-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:13:9-43
+28        android:label="@string/app_name"
+28-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:14:9-41
+29        android:roundIcon="@mipmap/ic_launcher_round"
+29-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:15:9-54
+30        android:supportsRtl="true"
+30-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:16:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.Present" >
+32-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:17:9-45
+33        <activity
+33-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:19:9-28:20
+34            android:name="com.example.present.MainActivity"
+34-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:20:13-41
+35            android:exported="true"
+35-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:21:13-36
+36            android:screenOrientation="sensorLandscape" >
+36-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:22:13-56
+37            <intent-filter>
+37-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:23:13-27:29
+38                <action android:name="android.intent.action.MAIN" />
+38-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:24:17-69
+38-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:24:25-66
+39
+40                <category android:name="android.intent.category.LAUNCHER" />
+40-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:26:17-77
+40-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\Present\app\src\main\AndroidManifest.xml:26:27-74
+41            </intent-filter>
+42        </activity>
+43
+44        <provider
+44-->[androidx.emoji2:emoji2:1.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\db233f3ba8947fb0f91cd701b83dfe6a\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+45            android:name="androidx.startup.InitializationProvider"
+45-->[androidx.emoji2:emoji2:1.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\db233f3ba8947fb0f91cd701b83dfe6a\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+46            android:authorities="com.example.present.androidx-startup"
+46-->[androidx.emoji2:emoji2:1.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\db233f3ba8947fb0f91cd701b83dfe6a\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+47            android:exported="false" >
+47-->[androidx.emoji2:emoji2:1.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\db233f3ba8947fb0f91cd701b83dfe6a\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+48            <meta-data
+48-->[androidx.emoji2:emoji2:1.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\db233f3ba8947fb0f91cd701b83dfe6a\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+49                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+49-->[androidx.emoji2:emoji2:1.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\db233f3ba8947fb0f91cd701b83dfe6a\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+50                android:value="androidx.startup" />
+50-->[androidx.emoji2:emoji2:1.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\db233f3ba8947fb0f91cd701b83dfe6a\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+51            <meta-data
+51-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\zchoo\.gradle\caches\transforms-3\45759b04922bc547a81513b82a38ba1e\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+52                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+52-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\zchoo\.gradle\caches\transforms-3\45759b04922bc547a81513b82a38ba1e\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+53                android:value="androidx.startup" />
+53-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\zchoo\.gradle\caches\transforms-3\45759b04922bc547a81513b82a38ba1e\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+54        </provider>
+55    </application>
+56
+57</manifest>

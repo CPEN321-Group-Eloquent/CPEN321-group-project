@@ -1,0 +1,151 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.eloquent"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+12-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:7:5-71
+12-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:7:22-68
+13    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+13-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:8:5-70
+13-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:8:22-68
+14
+15    <application
+15-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:10:5-54:19
+16        android:allowBackup="true"
+16-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:11:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.5.0] C:\Users\zchoo\.gradle\caches\transforms-3\f5d35f68d2cc3eb6c0b5cd9fd1247d1f\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
+18        android:dataExtractionRules="@xml/data_extraction_rules"
+18-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:12:9-65
+19        android:debuggable="true"
+20        android:fullBackupContent="@xml/backup_rules"
+20-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:13:9-54
+21        android:icon="@mipmap/ic_launcher"
+21-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:14:9-43
+22        android:label="@string/app_name"
+22-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:15:9-41
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:16:9-54
+24        android:supportsRtl="true"
+24-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:17:9-35
+25        android:testOnly="true"
+26        android:theme="@style/Theme.Eloquent"
+26-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:18:9-46
+27        android:usesCleartextTraffic="true" >
+27-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:19:9-44
+28        <activity
+28-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:21:9-23:39
+29            android:name="com.example.eloquent.Share"
+29-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:22:13-34
+30            android:exported="false" />
+30-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:23:13-37
+31        <activity
+31-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:25:9-27:39
+32            android:name="com.example.eloquent.EditPres"
+32-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:26:13-37
+33            android:exported="true" />
+33-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:27:13-36
+34        <activity
+34-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:28:9-31:58
+35            android:name="com.example.eloquent.Presenting"
+35-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:29:13-39
+36            android:exported="false"
+36-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:30:13-37
+37            android:screenOrientation="sensorLandscape" />
+37-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:31:13-56
+38        <activity
+38-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:32:9-34:40
+39            android:name="com.example.eloquent.Preparation"
+39-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:33:13-40
+40            android:exported="false" />
+40-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:34:13-37
+41        <activity
+41-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:35:9-43:20
+42            android:name="com.example.eloquent.Login"
+42-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:36:13-34
+43            android:exported="true" >
+43-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:37:13-36
+44            <intent-filter>
+44-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:38:13-42:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:39:17-69
+45-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:39:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:41:17-77
+47-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:41:27-74
+48            </intent-filter>
+49        </activity>
+50        <activity
+50-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:44:9-50:20
+51            android:name="com.example.eloquent.AddPres"
+51-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:45:13-36
+52            android:exported="false" >
+52-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:46:13-37
+53            <meta-data
+53-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:47:13-49:49
+54                android:name="android.support.PARENT_ACTIVITY"
+54-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:48:17-63
+55                android:value=".MainActivity" />
+55-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:49:17-46
+56        </activity>
+57        <activity
+57-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:51:9-53:39
+58            android:name="com.example.eloquent.MainActivity"
+58-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:52:13-41
+59            android:exported="true" />
+59-->C:\Users\zchoo\Desktop\CPEN321\CPEN321-group-project\app\src\main\AndroidManifest.xml:53:13-36
+60        <activity
+60-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:23:9-27:75
+61            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+61-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:24:13-93
+62            android:excludeFromRecents="true"
+62-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:25:13-46
+63            android:exported="false"
+63-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:26:13-37
+64            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+64-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:27:13-72
+65        <!--
+66            Service handling Google Sign-In user revocation. For apps that do not integrate with
+67            Google Sign-In, this service will never be started.
+68        -->
+69        <service
+69-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:33:9-37:51
+70            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+70-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:34:13-89
+71            android:exported="true"
+71-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:35:13-36
+72            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+72-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:36:13-107
+73            android:visibleToInstantApps="true" />
+73-->[com.google.android.gms:play-services-auth:20.2.0] C:\Users\zchoo\.gradle\caches\transforms-3\00485c9fc4c7979a4e63a2371e1e7d45\transformed\play-services-auth-20.2.0\AndroidManifest.xml:37:13-48
+74
+75        <activity
+75-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\zchoo\.gradle\caches\transforms-3\554e56b7ca3c23393183273258feb399\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+76            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+76-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\zchoo\.gradle\caches\transforms-3\554e56b7ca3c23393183273258feb399\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+77            android:exported="false"
+77-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\zchoo\.gradle\caches\transforms-3\554e56b7ca3c23393183273258feb399\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+78            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+78-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\zchoo\.gradle\caches\transforms-3\554e56b7ca3c23393183273258feb399\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+79
+80        <meta-data
+80-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\f4edb30f12a4233ffb8ce3032d6469ff\transformed\play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+81            android:name="com.google.android.gms.version"
+81-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\f4edb30f12a4233ffb8ce3032d6469ff\transformed\play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+82            android:value="@integer/google_play_services_version" />
+82-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\zchoo\.gradle\caches\transforms-3\f4edb30f12a4233ffb8ce3032d6469ff\transformed\play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+83    </application>
+84
+85</manifest>

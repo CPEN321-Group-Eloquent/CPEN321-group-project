@@ -15,6 +15,6 @@ router.put("/login", userStore.login);
 router.put("/addPresToUser", userStore.addPresToUser);
 
 //Parser routes
-router.put("/import", parser.parse));
+router.put("/import", parser.parse);
 
 module.exports = router;

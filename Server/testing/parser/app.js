@@ -29,7 +29,12 @@ function main() {
     });
     
     exportButton.addEventListener("click", () => {
-        alert("Export button pressed!");
+        //alert("Export button pressed!");
+        fetch("/exportTest", {
+            method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
     });
 }
 

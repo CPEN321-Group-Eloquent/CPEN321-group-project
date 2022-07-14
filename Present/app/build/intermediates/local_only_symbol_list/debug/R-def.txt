@@ -1,0 +1,23 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id linear_lay
+id speech_text
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string flip_button
+string next_card_button
+string prev_card_button
+style Theme.Present
+xml backup_rules
+xml data_extraction_rules

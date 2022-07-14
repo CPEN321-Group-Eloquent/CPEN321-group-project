@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="azure_blue">#F0FFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="blue">#00FFFF</color>
+    <color name="light_blue">#ADD8E6</color>
+    <color name="pink">#FFC0CB</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="violet">#7F00FF</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Eloquent</string>
+    <string name="google_oauth2_web_client_id">9332959347-o8lhle1t6p7oanp5rq08vosu7vct3as3.apps.googleusercontent.com</string>
+    <style name="Theme.Eloquent" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        
+    </style>
+</resources>
