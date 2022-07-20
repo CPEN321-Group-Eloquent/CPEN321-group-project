@@ -15,6 +15,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.json.Json;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -159,6 +160,39 @@ public class Router {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("userID", userID);
                 params.put("text", presentationTextRep);
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                return headers;
+            }
+        };
+
+        requestQueue.add(stringRequest);
+    }
+
+    public void savePresentation(String presID, String jsonString) {
+
+        String url = BACKEND_HOST_AND_PORT + "/api/presentation"; // BACKEND_HOST_AND_PORT doesn't end with a "/"!
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG,error.toString());
+            }
+        }) {
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("presID", presID);
+                params.put("json", jsonString);
                 return params;
             }
             @Override
